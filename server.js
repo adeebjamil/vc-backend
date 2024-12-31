@@ -14,20 +14,23 @@ const io = socketIo(server, {
   }
 });
 
+// CORS middleware to allow requests from the frontend
 app.use(cors({
   origin: [process.env.FRONTEND_URL, 'https://vc-client-coral.vercel.app']
 }));
 
+// Endpoint to create a new room
 app.get('/room', (req, res) => {
   const roomId = uuidV4();
   res.json({ roomId });
 });
 
+// Handle socket connections
 io.on('connection', (socket) => {
   console.log('A user connected');
 
+  // Handle user joining a room
   socket.on('join-room', (roomId) => {
-    // Check if roomId is valid
     if (!roomId) {
       console.error('Invalid roomId');
       return;
@@ -59,6 +62,7 @@ io.on('connection', (socket) => {
   });
 });
 
+// Start the server on port 3001
 server.listen(3001, () => {
   console.log('Server is running on port 3001');
 });
