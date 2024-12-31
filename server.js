@@ -23,6 +23,10 @@ app.get('/room', (req, res) => {
   res.json({ roomId });
 });
 
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
 io.on('connection', (socket) => {
   console.log('A user connected');
 
