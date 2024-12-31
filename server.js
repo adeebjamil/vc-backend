@@ -1,4 +1,4 @@
-require('dotenv').config();  
+require('dotenv').config();
 const express = require('express');
 const http = require('http');
 const { v4: uuidV4 } = require('uuid');
@@ -9,22 +9,18 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: process.env.FRONTEND_URL,
+    origin: [process.env.FRONTEND_URL, 'https://vc-client-coral.vercel.app'],
     methods: ["GET", "POST"]
   }
 });
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL
+  origin: [process.env.FRONTEND_URL, 'https://vc-client-coral.vercel.app']
 }));
 
 app.get('/room', (req, res) => {
   const roomId = uuidV4();
   res.json({ roomId });
-});
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
 });
 
 io.on('connection', (socket) => {
