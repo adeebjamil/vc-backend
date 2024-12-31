@@ -1,3 +1,4 @@
+require('dotenv').config();  
 const express = require('express');
 const http = require('http');
 const { v4: uuidV4 } = require('uuid');
@@ -8,13 +9,13 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3002",
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST"]
   }
 });
 
 app.use(cors({
-  origin: "http://localhost:3002"
+  origin: process.env.FRONTEND_URL
 }));
 
 app.get('/room', (req, res) => {
