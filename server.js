@@ -9,14 +9,14 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: [process.env.FRONTEND_URL, 'https://vc-client-coral.vercel.app'],
+    origin: [process.env.FRONTEND_URL],
     methods: ["GET", "POST"]
   }
 });
 
 // CORS middleware to allow requests from the frontend
 app.use(cors({
-  origin: [process.env.FRONTEND_URL, 'https://vc-client-coral.vercel.app']
+  origin: [process.env.FRONTEND_URL]
 }));
 
 // Endpoint to create a new room
