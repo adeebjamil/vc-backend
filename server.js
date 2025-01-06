@@ -7,12 +7,16 @@ const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
+const allowedOrigins = ["https://vc-client-yg2d.vercel.app", process.env.FRONTEND_URL];
+
 const io = socketIo(server, {
   cors: {
-    origin: [process.env.FRONTEND_URL],
+    origin: allowedOrigins,
     methods: ["GET", "POST"]
   }
 });
+
+
 
 // Log the FRONTEND_URL to ensure it's being loaded correctly
 console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
