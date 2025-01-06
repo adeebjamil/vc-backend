@@ -7,7 +7,7 @@ const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
-const allowedOrigins = ["https://vc-client-yg2d.vercel.app", process.env.FRONTEND_URL];
+const allowedOrigins = ["https://localhost:3002", process.env.FRONTEND_URL];
 
 const io = socketIo(server, {
   cors: {
