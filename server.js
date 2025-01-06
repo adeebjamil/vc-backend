@@ -18,8 +18,6 @@ const io = socketIo(server, {
   }
 });
 
-
-
 // Log the FRONTEND_URL to ensure it's being loaded correctly
 console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
 
