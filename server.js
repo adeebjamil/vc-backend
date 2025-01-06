@@ -65,7 +65,8 @@ io.on('connection', (socket) => {
   });
 });
 
-// Start the server on port 3001
-server.listen(3001, () => {
-  console.log('Server is running on port 3001');
+// Start the server on the port specified in the .env file
+const PORT = process.env.PORT || 3001;
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
