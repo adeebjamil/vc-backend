@@ -7,7 +7,9 @@ const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
-const allowedOrigins = ["https://localhost:3002", process.env.FRONTEND_URL];
+
+// List of allowed origins
+const allowedOrigins = ["https://vc-client-9dmx-r8dd2q80m-adeebs-projects-3dd01d17.vercel.app", process.env.FRONTEND_URL];
 
 const io = socketIo(server, {
   cors: {
